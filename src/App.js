@@ -25,12 +25,12 @@ function App() {
 
     const docWidth = pdf.internal.pageSize.getWidth();
 
-    pdf.setFontSize(6);
+    pdf.setFontSize(8);
 
     pdf.text('EDUCANDÁRIO RAIZ DO SABER', docWidth / 2, 10, { align: 'center' });
-    pdf.text('Rua Francisco do Rego Moraes Barros', docWidth / 2, 12, { align: 'center' });
-    pdf.text('Engenho Maranguape - Paulista - PE', docWidth / 2, 14, { align: 'center' });
-    pdf.text('CNPJ: 03.511.401.0001-02', docWidth / 2, 16, { align: 'center' });
+    pdf.text('Rua Francisco do Rego Moraes Barros', docWidth / 2, 13, { align: 'center' });
+    pdf.text('Engenho Maranguape - Paulista - PE', docWidth / 2, 16, { align: 'center' });
+    pdf.text('CNPJ: 03.511.401.0001-02', docWidth / 2, 19, { align: 'center' });
 
     pdf.setFontSize(10);
 
@@ -57,7 +57,9 @@ function App() {
     yPos += 15;
     pdf.text('Obrigado!', 10, yPos);
 
-    pdf.save('recibo_pagamento.pdf');
+    const pdfBlob = pdf.output('blob');
+    const pdfUrl = URL.createObjectURL(pdfBlob);
+    window.open(pdfUrl);
   };
 
   return (
